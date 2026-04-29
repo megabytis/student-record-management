@@ -5,26 +5,16 @@ import morgan from "morgan";
 
 import routes from "./routes.js";
 import errorMiddleware from "./shared/middlewares/error.middleware.js";
-import env from "./config/env.js";
 
 const app = express();
 
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       const allowedOrigins = ["http://localhost:8080", env.FRONTEND_URL];
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-//     optionsSuccessStatus: 200,
-//   }),
-// );
+app.use(
+  cors({
+    origin: ["https://student-record-management-frontend.vercel.app"],
+    credentials: true,
+  }),
+);
+// app.use(cors());
 app.use(express.json());
 app.use(cookieparser());
 
